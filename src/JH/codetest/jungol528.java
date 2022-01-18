@@ -18,6 +18,11 @@ public class Jungol528 {
         if(isMinus(input)){
             printConsole("minus");
         }
+        //
+        //
+        //
+        //
+        //
     }
 
     private static void printConsole(String inputStr) {
