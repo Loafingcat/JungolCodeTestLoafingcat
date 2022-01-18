@@ -1,4 +1,4 @@
-package jh.codetest;
+package JH.codetest;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
