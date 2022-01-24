@@ -11,7 +11,7 @@ public class Jungol531 {
         //61.23 Lightweight
         //72.57 Middleweight
         //88.45 Cruiserweight
-        //초과 Heavyweight
+        //88.45 초과 Heavyweight
 
         if (isweight(kg, 50.80)) {
             System.out.println("Flyweight");
