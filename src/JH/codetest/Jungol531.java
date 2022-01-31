@@ -15,19 +15,19 @@ public class Jungol531 {
 
         if (isweight(kg, 50.80)) {
             System.out.println("Flyweight");
-        } else if(isweight(kg, 61.23)){
+        } else if (isweight(kg, 61.23)) {
             System.out.println("Lightweight");
-        } else if(isweight(kg, 72.57)){
+        } else if (isweight(kg, 72.57)) {
             System.out.println("Middleweight");
-        } else if(isweight(kg, 88.45)) {
+        } else if (isweight(kg, 88.45)) {
             System.out.println("Cruiserweight");
         } else {
             System.out.println("Heavyweight");
         }
     }
     private static boolean isweight(double kg, double compare){
-        if(kg <= compare);
-        return true;
+        return (kg <= compare);
+
     }
 }
 
