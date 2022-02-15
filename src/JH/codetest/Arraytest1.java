@@ -14,7 +14,7 @@ public class Arraytest1 {
     }
 
     public static int max(int n[]) {
-        int max = n[0];
+        int max = n[0];//첫번째 자리부터 계속 비교비교
 
         for (int i = 1; i < n.length; i++)
             if (n[i] > max) max = n[i];
