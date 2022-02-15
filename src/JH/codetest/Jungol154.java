@@ -14,6 +14,7 @@ public class Jungol154 {
 
         for (int i = 0; i < 5; i++) {
             weight[i] = sc.nextDouble();
+            // weight[] 배열의 길이에 상관 없이 평균을 구하는 메소드를 만들고, 이걸 갖다 써서 구현 해 보시오.
             avg += weight[i];
         }
 
