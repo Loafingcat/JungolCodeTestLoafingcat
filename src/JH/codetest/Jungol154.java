@@ -11,26 +11,29 @@ public class Jungol154 {
 
         for (int i = 0; i < weights.length; i++) {
             weights[i] = sc.nextDouble();
+            //Arrays.sort(weights);
         }
         double avg = avg(weights);
         double min = min(weights);
         double max = max(weights);
 
         // weights[] 배열의 길이에 상관 없이 평균을 구하는 메소드를 만들고, 이걸 갖다 써서 구현 해 보시오.
+        System.out.print("몸무게 평균 : ");
         System.out.printf("%.1f%n", avg);
-        System.out.print("가장 가벼운 사람 :" + min + " " + "가장 무거운 사람 : " + max);
+        System.out.print("가장 가벼운 사람 : " + min + " " + "가장 무거운 사람 : " + max);
+        //min = weights[0], max = weigth.length - 1
     }
 
     private static double min(double[] weights) {
-        double[] copy = Arrays.copyOf(weights, weights.length);
-        Arrays.sort(copy);
-        return copy[0];
+        double[] lightest = Arrays.copyOf(weights, weights.length);
+        Arrays.sort(lightest);
+        return lightest[0];
     }
 
     private static double max(double[] weights) {
-        double[] copy = Arrays.copyOf(weights, weights.length);
-        Arrays.sort(copy);
-        return copy[weights.length - 1];
+        double[] heaviest = Arrays.copyOf(weights, weights.length);
+        Arrays.sort(heaviest);
+        return heaviest[weights.length - 1];
     }
 
     private static double avg(double[] weights) {
