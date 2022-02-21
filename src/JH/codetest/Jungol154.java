@@ -21,19 +21,16 @@ public class Jungol154 {
         System.out.print("몸무게 평균 : ");
         System.out.printf("%.1f%n", avg);
         System.out.print("가장 가벼운 사람 : " + min + " " + "가장 무거운 사람 : " + max);
-        //min = weights[0], max = weigth.length - 1
     }
 
     private static double min(double[] weights) {
-        double[] lightest = Arrays.copyOf(weights, weights.length);
-        Arrays.sort(lightest);
-        return lightest[0];
+        Arrays.sort(weights);
+        return weights[0];
     }
 
     private static double max(double[] weights) {
-        double[] heaviest = Arrays.copyOf(weights, weights.length);
-        Arrays.sort(heaviest);
-        return heaviest[weights.length - 1];
+        Arrays.sort(weights);
+        return weights[weights.length - 1];
     }
 
     private static double avg(double[] weights) {
@@ -41,6 +38,6 @@ public class Jungol154 {
         for (double number : weights) {
             sum += number;
         }
-        return sum/weights.length;
+        return sum / weights.length;
     }
 }
