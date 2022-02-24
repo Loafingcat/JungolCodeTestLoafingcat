@@ -1,4 +1,4 @@
-package JH.codetest;
+package JH.codetest.jungol191;
 
 import java.util.Scanner;
 
@@ -31,18 +31,18 @@ public class Jungol191_JH {
         System.out.println("입력받은 단어의 갯수 : " + count);
     }
 
-    private static int getTextCountUntilInputIs(Scanner inputConsoleScanner, String is, int inputTextLimit, int inputTextLengthLimit) {
+    private static int getTextCountUntilInputIs(Scanner inputConsoleScanner, String is, final int COUNT_LIMIT_INPUT_TEXT, final int LENGTH_LIMIT_INPUT_TEXT) {
         int inputedTextCount = 0;
         while (true) {
             String inputedText = inputConsoleScanner.next();
 
             // 3. 단어의 개수는 50개를 넘지 않고,
-            if(isInputedTextCountIsUnder(inputedTextCount, inputTextLimit)){
+            if(isInputedTextCountIsUnder(inputedTextCount, COUNT_LIMIT_INPUT_TEXT)){
                 break;
             }
 
             // 3. 단어의 길이는 100자 이하이다.
-            if(isInputedTextLengthLimit(inputedText, inputTextLengthLimit)){
+            if(isInputedTextLengthLimit(inputedText, LENGTH_LIMIT_INPUT_TEXT)){
                 break;
             }
 
