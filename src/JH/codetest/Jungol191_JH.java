@@ -22,7 +22,8 @@ public class Jungol191_JH {
         Scanner sc = new Scanner(System.in); // 인스턴스?
         System.out.println("단어를 입력 하시오.");
 
-        int count = getTextCountUntilInputIs(sc, "0");
+        int count = getTextCountUntilInputIs(sc, "0", 50, 100);
+        // 2. 하고, 그 때까지 입력받은 단어의 개수를 출력
         printInputedTextCount(count);
     }
 
@@ -30,16 +31,35 @@ public class Jungol191_JH {
         System.out.println("입력받은 단어의 갯수 : " + count);
     }
 
-    private static int getTextCountUntilInputIs(Scanner inputConsoleScanner, String is) {
+    private static int getTextCountUntilInputIs(Scanner inputConsoleScanner, String is, int inputTextLimit, int inputTextLengthLimit) {
         int inputedTextCount = 0;
         while (true) {
             String inputedText = inputConsoleScanner.next();
+
+            // 3. 단어의 개수는 50개를 넘지 않고,
+            if(isInputedTextCountIsUnder(inputedTextCount, inputTextLimit)){
+                break;
+            }
+
+            // 3. 단어의 길이는 100자 이하이다.
+            if(isInputedTextLengthLimit(inputedText, inputTextLengthLimit)){
+                break;
+            }
+
             if(isInputTextMatch(inputedText, is)){
                 break;
             }
             inputedTextCount++;
         }
         return inputedTextCount;
+    }
+
+    private static boolean isInputedTextLengthLimit(String inputedText, int inputTextLengthLimit) {
+        return inputedText.length() <= inputTextLengthLimit;
+    }
+
+    private static boolean isInputedTextCountIsUnder(int inputedTextCount, int inputTextLimit) {
+        return inputedTextCount <= inputTextLimit;
     }
 
     private static boolean isInputTextMatch(String input, String is) {
