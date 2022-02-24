@@ -40,14 +40,20 @@ public class Jungol191_JH {
         }
     }
 
+    // i가 홀수인지 짝수인지?
     private static boolean isOddIdxNum(int i) {
         return i % 2 == 1; // 홀수
     }
 
+    // count를 console에 출력
     private static void printInputedTextCount(int count) {
         System.out.println("입력받은 단어의 갯수 : " + count);
     }
 
+    /*
+    *
+    *
+    * */
     private static TextFromConsoleInfo getTextCountUntilInputIs(Scanner consoleScanner, String is, final int COUNT_LIMIT_INPUT_TEXT, final int LENGTH_LIMIT_INPUT_TEXT) {
         TextFromConsoleInfo tfci = new TextFromConsoleInfo();
         int inputedTextCount = 0;
