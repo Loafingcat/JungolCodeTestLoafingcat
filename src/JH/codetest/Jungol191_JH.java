@@ -22,16 +22,24 @@ public class Jungol191_JH {
         Scanner sc = new Scanner(System.in); // 인스턴스?
         System.out.println("단어를 입력 하시오.");
 
-        getTextUntilInputIs(sc, "0");
+        int count = getTextCountUntilInputIs(sc, "0");
+        printInputedTextCount(count);
     }
 
-    private static void getTextUntilInputIs(Scanner inputConsoleScanner, String is) {
+    private static void printInputedTextCount(int count) {
+        System.out.println("입력받은 단어의 갯수 : " + count);
+    }
+
+    private static int getTextCountUntilInputIs(Scanner inputConsoleScanner, String is) {
+        int inputedTextCount = 0;
         while (true) {
             String inputedText = inputConsoleScanner.next();
             if(isInputTextMatch(inputedText, is)){
                 break;
             }
+            inputedTextCount++;
         }
+        return inputedTextCount;
     }
 
     private static boolean isInputTextMatch(String input, String is) {
