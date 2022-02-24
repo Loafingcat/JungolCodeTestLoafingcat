@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Jungol191 {
     public static void main(String[] args) {
 
+        // YOU WIN
         Scanner sc = new Scanner(System.in);
         String str[] = new String[50];
         String counts;

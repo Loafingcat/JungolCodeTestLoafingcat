@@ -22,22 +22,47 @@ public class Jungol191_JH {
         Scanner sc = new Scanner(System.in); // 인스턴스?
         System.out.println("단어를 입력 하시오.");
 
-        int count = getTextCountUntilInputIs(sc, "0", 50, 100);
+        final String TURN_OFF_STRING = "0";
+        TextFromConsoleInfo info = getTextCountUntilInputIs(sc, TURN_OFF_STRING, 3, 10);
         // 2. 하고, 그 때까지 입력받은 단어의 개수를 출력
-        printInputedTextCount(count);
+        printInputedTextCount(info.getTextsCount(TURN_OFF_STRING));
+        // 4. 하고, 홀수 번째 입력받은 단어를 한 줄에 1개씩 출력
+        printTexts(info.getTexts(), "odd");
+    }
+
+    private static void printTexts(String[] texts, String odd) {
+        for(int i = 0; i < texts.length; i++){
+            if(odd.equals("odd") & isOddIdxNum(i)){
+                if(texts[i] != null) {
+                    System.out.println(texts[i-1]);
+                }
+            }
+        }
+    }
+
+    private static boolean isOddIdxNum(int i) {
+        return i % 2 == 1; // 홀수
     }
 
     private static void printInputedTextCount(int count) {
         System.out.println("입력받은 단어의 갯수 : " + count);
     }
 
-    private static int getTextCountUntilInputIs(Scanner consoleScanner, String is, final int COUNT_LIMIT_INPUT_TEXT, final int LENGTH_LIMIT_INPUT_TEXT) {
+    private static TextFromConsoleInfo getTextCountUntilInputIs(Scanner consoleScanner, String is, final int COUNT_LIMIT_INPUT_TEXT, final int LENGTH_LIMIT_INPUT_TEXT) {
+        TextFromConsoleInfo tfci = new TextFromConsoleInfo();
         int inputedTextCount = 0;
-        String[] texts = new String[COUNT_LIMIT_INPUT_TEXT];
+        tfci.setTexts(COUNT_LIMIT_INPUT_TEXT);
         while (true) {
             String textFromConsole = consoleScanner.next();
-            texts[inputedTextCount] = textFromConsole;
-            // 3. 단어의 개수는 50개를 넘지 않고,
+            tfci.getTexts()[inputedTextCount] = textFromConsole;
+            inputedTextCount++;
+
+            // 1. 단어를 입력받다가 0을 입력받으면 종료
+            if(isTextMatch(textFromConsole, is)){
+                break;
+            }
+
+            // 3. 단어의 개수는 COUNT_LIMIT_INPUT_TEXT개를 넘지 않고,
             if(isTextCountLimitFromConsole(inputedTextCount, COUNT_LIMIT_INPUT_TEXT)){
                 break;
             }
@@ -47,21 +72,16 @@ public class Jungol191_JH {
                 break;
             }
 
-            // 1. 단어를 입력받다가 0을 입력받으면 종료
-            if(isTextMatch(textFromConsole, is)){
-                break;
-            }
-            inputedTextCount++;
         }
-        return inputedTextCount;
+        return tfci;
     }
 
     private static boolean isTextLengthLimitFromConsole(String inputedText, int inputTextLengthLimit) {
-        return inputedText.length() <= inputTextLengthLimit;
+        return inputedText.length() >= inputTextLengthLimit;
     }
 
     private static boolean isTextCountLimitFromConsole(int inputedTextCount, int inputTextLimit) {
-        return inputedTextCount <= inputTextLimit;
+        return inputedTextCount >= inputTextLimit;
     }
 
     private static boolean isTextMatch(String input, String is) {
