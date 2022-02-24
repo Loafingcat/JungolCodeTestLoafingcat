@@ -31,22 +31,24 @@ public class Jungol191_JH {
         System.out.println("입력받은 단어의 갯수 : " + count);
     }
 
-    private static int getTextCountUntilInputIs(Scanner inputConsoleScanner, String is, final int COUNT_LIMIT_INPUT_TEXT, final int LENGTH_LIMIT_INPUT_TEXT) {
+    private static int getTextCountUntilInputIs(Scanner consoleScanner, String is, final int COUNT_LIMIT_INPUT_TEXT, final int LENGTH_LIMIT_INPUT_TEXT) {
         int inputedTextCount = 0;
+        String[] texts = new String[COUNT_LIMIT_INPUT_TEXT];
         while (true) {
-            String inputedText = inputConsoleScanner.next();
-
+            String textFromConsole = consoleScanner.next();
+            texts[inputedTextCount] = textFromConsole;
             // 3. 단어의 개수는 50개를 넘지 않고,
-            if(isInputedTextCountIsUnder(inputedTextCount, COUNT_LIMIT_INPUT_TEXT)){
+            if(isTextCountLimitFromConsole(inputedTextCount, COUNT_LIMIT_INPUT_TEXT)){
                 break;
             }
 
             // 3. 단어의 길이는 100자 이하이다.
-            if(isInputedTextLengthLimit(inputedText, LENGTH_LIMIT_INPUT_TEXT)){
+            if(isTextLengthLimitFromConsole(textFromConsole, LENGTH_LIMIT_INPUT_TEXT)){
                 break;
             }
 
-            if(isInputTextMatch(inputedText, is)){
+            // 1. 단어를 입력받다가 0을 입력받으면 종료
+            if(isTextMatch(textFromConsole, is)){
                 break;
             }
             inputedTextCount++;
@@ -54,15 +56,15 @@ public class Jungol191_JH {
         return inputedTextCount;
     }
 
-    private static boolean isInputedTextLengthLimit(String inputedText, int inputTextLengthLimit) {
+    private static boolean isTextLengthLimitFromConsole(String inputedText, int inputTextLengthLimit) {
         return inputedText.length() <= inputTextLengthLimit;
     }
 
-    private static boolean isInputedTextCountIsUnder(int inputedTextCount, int inputTextLimit) {
+    private static boolean isTextCountLimitFromConsole(int inputedTextCount, int inputTextLimit) {
         return inputedTextCount <= inputTextLimit;
     }
 
-    private static boolean isInputTextMatch(String input, String is) {
+    private static boolean isTextMatch(String input, String is) {
         return input.equals(is);
     }
 
