@@ -22,26 +22,30 @@ public class Jungol207 {
         switch(op) {
             case '+':
                 result = num1 + num2;
-                System.out.println("두 수를" + op + "한 값은" + result + "입니다.");
+                printOut(op, result);
                 break;
             case '-':
                 result = num1 - num2;
-                System.out.println("두 수를" + op + "한 값은" + result + "입니다.");
+                printOut(op, result);
                 break;
             case '*':
                 result = num1 * num2;
-                System.out.println("두 수를" + op + "한 값은" + result + "입니다.");
+                printOut(op, result);
                 break;
             case '/':
                 result = num1 / num2;
-                System.out.println("두 수를" + op + "한 값은" + result + "입니다.");
+                printOut(op, result);
                 break;
             case '%':
                 result = num1 % num2;
-                System.out.println("두 수를" + op + "한 값은" + result + "입니다.");
+                printOut(op, result);
                 break;
             default:
                 System.out.println("잘못 입력하셨습니다. 다시 입력하세요.");
         }
+    }
+
+    private static void printOut(char op, double result) {
+        System.out.println("전체 숫자를" + op + "한 값은" + result + "로 나왔습니다.");
     }
 }
