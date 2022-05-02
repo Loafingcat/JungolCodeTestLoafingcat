@@ -19,7 +19,14 @@ public class Jungol207 {
         System.out.println("+, -, *, /, % 중 하나를 고르세요.");
         op = sc.next().charAt(0);
 
-        switch(op) {
+        String strForPrint = calculate(op, num1, num2);
+        System.out.println(strForPrint);
+    }
+
+    private static String calculate(char op, int num1, int num2) {
+        double result = 0;
+
+        switch (op) {
             case '+':
                 result = num1 + num2;
                 printOut(op, result);
@@ -43,9 +50,10 @@ public class Jungol207 {
             default:
                 System.out.println("잘못 입력하셨습니다. 다시 입력하세요.");
         }
+        return String.valueOf(result);
     }
 
-    private static void printOut(char op, double result) {
-        System.out.println("전체 숫자를" + op + "한 값은" + result + "로 나왔습니다.");
+        private static void printOut ( char op, double result){
+            System.out.println("전체 숫자를" + op + "한 값은" + result + "로 나왔습니다.");
     }
 }
