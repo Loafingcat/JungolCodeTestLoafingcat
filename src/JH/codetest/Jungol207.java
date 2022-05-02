@@ -10,7 +10,7 @@ public class Jungol207 {
         char op; //operater 연산자
         int num1;
         int num2;
-        double result;
+        double result = 0;
 
         System.out.print("숫자 두 개를 입력하세요: ");
         num1 = sc.nextInt();
@@ -19,33 +19,27 @@ public class Jungol207 {
         System.out.println("+, -, *, /, % 중 하나를 고르세요.");
         op = sc.next().charAt(0);
 
-        String strForPrint = calculate(op, num1, num2);
-        System.out.println(strForPrint);
+        String strForPrint = calculate(op, num1, num2, result);
+        printOut(op, strForPrint);
     }
 
-    private static String calculate(char op, int num1, int num2) {
-        double result = 0;
+    private static String calculate(char op, int num1, int num2, double result) {
 
         switch (op) {
             case '+':
                 result = num1 + num2;
-                printOut(op, result);
                 break;
             case '-':
                 result = num1 - num2;
-                printOut(op, result);
                 break;
             case '*':
                 result = num1 * num2;
-                printOut(op, result);
                 break;
             case '/':
                 result = num1 / num2;
-                printOut(op, result);
                 break;
             case '%':
                 result = num1 % num2;
-                printOut(op, result);
                 break;
             default:
                 System.out.println("잘못 입력하셨습니다. 다시 입력하세요.");
@@ -53,7 +47,8 @@ public class Jungol207 {
         return String.valueOf(result);
     }
 
-        private static void printOut ( char op, double result){
-            System.out.println("전체 숫자를" + op + "한 값은" + result + "로 나왔습니다.");
+    private static void printOut(char op, String str) {
+        System.out.println("전체 숫자를" + op + "한 값은" + str + "로 나왔습니다.");
     }
 }
+
