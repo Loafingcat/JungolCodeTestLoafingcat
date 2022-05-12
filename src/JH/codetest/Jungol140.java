@@ -5,6 +5,12 @@ import java.util.Scanner;
 
 public class Jungol140 {
     public static void main(String[] args) {
+        // 20개 이하의 숫자를 입력받는다.
+        // <=20 개 이하로 받다가 0 입력받으면 '계산' 수행.
+        // 20개 까지 모두 입력 받으면 '계산' 수행한다.
+        // 20개까지 입력 받으면, 즉각 '계산'을 수행하도록.
+
+        // '계산' : 합계, 평균을 출력한다.
         Scanner sc = new Scanner(System.in);
         ArrayList<Integer> numbers = new ArrayList<>();
 
