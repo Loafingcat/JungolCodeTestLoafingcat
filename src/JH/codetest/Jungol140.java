@@ -12,19 +12,15 @@ public class Jungol140 {
 
         // '계산' : 합계, 평균을 출력한다.
         Scanner sc = new Scanner(System.in);
-        ArrayList<Integer> numbers = new ArrayList<>();
+        ArrayList<Integer> numbers = new ArrayList<>(20);
 
         System.out.println("숫자를 입력하세요: ");
 
         int num = sc.nextInt();
 
-        while (num != 0) {
+        while (num != 0 && numbers.size() < 20) {
             numbers.add(num);
             num = sc.nextInt();
-        }
-        if (numbers.size() > 20) {
-            System.out.println("20개 이하의 숫자만 입력하세요.");
-            System.exit(0);
         }
         int sum = sum(numbers);
         int avg = avg(numbers);
