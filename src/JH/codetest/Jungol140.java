@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Jungol140 {
+
     public static void main(String[] args) {
         // 20개 이하의 숫자를 입력받는다.
         // <=20 개 이하로 받다가 0 입력받으면 '계산' 수행.
@@ -12,15 +13,18 @@ public class Jungol140 {
 
         // '계산' : 합계, 평균을 출력한다.
         Scanner sc = new Scanner(System.in);
-        ArrayList<Integer> numbers = new ArrayList<>(20);
+        ArrayList<Integer> numbers = new ArrayList<>();
 
         System.out.println("숫자를 입력하세요: ");
 
-        int num = sc.nextInt();
+        //입력을 두번 받는게 문제.. 근데 int num을 0으로 하면 while문은 항상 flase가 됨.
+        int num;
 
-        while (num != 0 && numbers.size() < 20) {
+        while ((num = sc.nextInt()) != 0) {
             numbers.add(num);
-            num = sc.nextInt();
+            if (numbers.size() == 20) {
+                break;
+            }
         }
         int sum = sum(numbers);
         int avg = avg(numbers);
