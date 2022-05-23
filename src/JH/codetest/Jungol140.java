@@ -12,25 +12,33 @@ public class Jungol140 {
         // 20개까지 입력 받으면, 즉각 '계산'을 수행하도록.
 
         // '계산' : 합계, 평균을 출력한다.
-        Scanner sc = new Scanner(System.in);
-        ArrayList<Integer> numbers = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<Integer> userTypedNumbers = new ArrayList<>();
+        final int MAX_INPUT_NUMBER_LENGTH = 5; // 최대로 입력 받을 수 있는 숫자의 갯수
 
         System.out.println("숫자를 입력하세요: ");
 
-        //입력을 두번 받는게 문제.. 근데 int num을 0으로 하면 while문은 항상 flase가 됨.
-        int num;
+        // 유저로 하여금 숫자를 입력 받도록 한다.
+        userTypingNumbers(scanner, userTypedNumbers, MAX_INPUT_NUMBER_LENGTH);
 
-        while ((num = sc.nextInt()) != 0) {
-            numbers.add(num);
-            if (numbers.size() == 20) {
-                break;
-            }
-        }
-        int sum = sum(numbers);
-        int avg = avg(numbers);
+        int sum = sum(userTypedNumbers);
+        int avg = avg(userTypedNumbers);
 
         System.out.println(sum + " " + avg);
     }
+
+    // 유저가 MAX_INPUT_NUMBER_LENGTH 길이만큼 숫자들을 입력하는 만큼
+    // numbers List에 담는다.
+    private static void userTypingNumbers(Scanner sc, ArrayList<Integer> numbers, int MAX_INPUT_NUMBER_LENGTH) {
+        int num;
+        while ((num = sc.nextInt()) != 0) {
+            numbers.add(num);
+            if (numbers.size() == MAX_INPUT_NUMBER_LENGTH) {
+                break;
+            }
+        }
+    }
+
     private static int sum(ArrayList<Integer> numbers) {
         int sum = 0;
         for (int i : numbers) {
