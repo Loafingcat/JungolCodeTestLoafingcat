@@ -3,7 +3,7 @@ public class CheckDuplicateNumbers {
 	public static void main(String[] args) {
 		int[] numbers = {41, 3, 2, 6, 41, 8};
 		
-		// Áßº¹ È®ÀÎ
+		// ì¤‘ë³µí™•ì¸
 		for (int i = 0; i < numbers.length; i++) {
 			for (int j = i+1; j < numbers.length; j++) {
 				if(numbers[i] == numbers[j]) {

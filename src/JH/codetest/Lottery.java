@@ -6,8 +6,8 @@ public class Lottery {
         Scanner sc = new Scanner(System.in);
         Lottery lottery = new Lottery();
 
-        System.out.println("ÀÚµ¿ ·Î¶ÇÀÔ´Ï´Ù");
-        System.out.print("½ÃÇàÇÒ È½¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä: ");
+        System.out.println("ìë™ ë¡œë˜ì…ë‹ˆë‹¤");
+        System.out.print("ì‹œí–‰í•  íšŸìˆ˜ë¥¼ ì…ë ¥í•˜ì„¸ìš”:");
 
         int count = sc.nextInt();
 
@@ -15,7 +15,7 @@ public class Lottery {
             try {
 				System.out.println(lottery.lotteryNumbers());
 			} catch (Exception e) {
-				System.out.println("Áßº¹µÈ ¹øÈ£°¡ ¹ß»ıÇÏ¿´½À´Ï´Ù!");
+				System.out.println("ì¤‘ë³µëœ ë²ˆí˜¸ê°€ ë°œìƒí•˜ì˜€ìŠµë‹ˆë‹¤!");
 				e.printStackTrace();
 			}
         }
@@ -27,7 +27,7 @@ public class Lottery {
 
         for (int i = 0; i < 6; i++) {
             lotteryNums[i] = (int) (Math.random() * 45) + 1;
-            //Áßº¹Á¦°Å
+            //ì¤‘ë³µí™•ì¸
             for (int j = 0; j < i; j++) {
                 if (lotteryNums[i] == lotteryNums[j]) {
                     i--;
@@ -38,14 +38,14 @@ public class Lottery {
         
         boolean duplicateExist = checkDuplicateNumbers(lotteryNums);
         if(duplicateExist) {
-        	throw new Exception ("Áßº¹ÀÌ È®ÀÎµÇ¾ú½À´Ï´Ù. ´Ù½Ã ½ÃÀÛ ÇØ ÁÖ¼¼¿ä");
+        	throw new Exception ("ì¤‘ë³µì´ í™•ì¸ë˜ì—ˆìŠµë‹ˆë‹¤. ë‹¤ì‹œ ì‹œì‘ í•´ ì£¼ì„¸ìš”");
         }
 
         return Arrays.toString(lotteryNums);
     }
 
 	private boolean checkDuplicateNumbers(int[] numbers) {
-		// Áßº¹ È®ÀÎ
+		// ï¿½ßºï¿½ È®ï¿½ï¿½
 		for (int i = 0; i < numbers.length; i++) {
 			for (int j = i+1; j < numbers.length; j++) {
 				if(numbers[i] == numbers[j]) {
