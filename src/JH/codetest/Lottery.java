@@ -22,7 +22,7 @@ public class Lottery {
 
         int[] lotteryNums = new int[6];
 
-        for (int i = 0; i <= 5; i++) {
+        for (int i = 0; i < 6; i++) {
             lotteryNums[i] = (int) (Math.random() * 45) + 1;
             //중복제거
             for (int j = 0; j < i; j++) {
