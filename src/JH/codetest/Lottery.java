@@ -1,30 +1,33 @@
-package JH.codetest;
-
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class Lottery {
-    public static void main(String[] args) {
+	public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Lottery lottery = new Lottery();
 
-        System.out.println("ìë™ ë¡œë˜ì…ë‹ˆë‹¤");
-        System.out.print("ì‹œí–‰í•  íšŸìˆ˜ë¥¼ ì…ë ¥í•˜ì„¸ìš”: ");
+        System.out.println("ÀÚµ¿ ·Î¶ÇÀÔ´Ï´Ù");
+        System.out.print("½ÃÇàÇÒ È½¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä: ");
 
         int count = sc.nextInt();
 
         for (int i = 1; i <= count; i++) {
-            System.out.println(lottery.lotteryNumbers());
+            try {
+				System.out.println(lottery.lotteryNumbers());
+			} catch (Exception e) {
+				System.out.println("Áßº¹µÈ ¹øÈ£°¡ ¹ß»ıÇÏ¿´½À´Ï´Ù!");
+				e.printStackTrace();
+			}
         }
     }
 
-    String lotteryNumbers() {
+    String lotteryNumbers() throws Exception {
 
         int[] lotteryNums = new int[6];
 
         for (int i = 0; i < 6; i++) {
             lotteryNums[i] = (int) (Math.random() * 45) + 1;
-            //ì¤‘ë³µì œê±°
+            //Áßº¹Á¦°Å
             for (int j = 0; j < i; j++) {
                 if (lotteryNums[i] == lotteryNums[j]) {
                     i--;
@@ -32,10 +35,27 @@ public class Lottery {
             }
         }
         Arrays.sort(lotteryNums);
+        
+        boolean duplicateExist = checkDuplicateNumbers(lotteryNums);
+        if(duplicateExist) {
+        	throw new Exception ("Áßº¹ÀÌ È®ÀÎµÇ¾ú½À´Ï´Ù. ´Ù½Ã ½ÃÀÛ ÇØ ÁÖ¼¼¿ä");
+        }
 
         return Arrays.toString(lotteryNums);
     }
+
+	private boolean checkDuplicateNumbers(int[] numbers) {
+		// Áßº¹ È®ÀÎ
+		for (int i = 0; i < numbers.length; i++) {
+			for (int j = i+1; j < numbers.length; j++) {
+				if(numbers[i] == numbers[j]) {
+					System.out.println("i : " + i + ", j : " + j);
+					System.out.println("numbers[i] : " + numbers[i] + ", numbers[j] : " + numbers[j]);
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+    
 }
-
-
-
