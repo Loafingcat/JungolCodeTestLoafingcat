@@ -1,3 +1,9 @@
+package JH.codetest;
+
+import java.io.File;
+import java.io.PrintStream;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -5,6 +11,9 @@ public class Lottery {
 	public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Lottery lottery = new Lottery();
+        LocalDate now = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy:MM:dd HH:mm:ss");
+        String formatednow = now.format(formatter);
 
         System.out.println("자동 로또입니다");
         System.out.print("시행할 횟수를 입력하세요:");
@@ -34,20 +43,18 @@ public class Lottery {
                 }
             }
         }
-        Arrays.sort(lotteryNums);
         
         boolean duplicateExist = checkDuplicateNumbers(lotteryNums);
         if(duplicateExist) {
         	throw new Exception ("중복이 확인되었습니다. 다시 시작 해 주세요");
         }
-
         return Arrays.toString(lotteryNums);
     }
 
 	private boolean checkDuplicateNumbers(int[] numbers) {
-		// �ߺ� Ȯ��
+		//중복확인
 		for (int i = 0; i < numbers.length; i++) {
-			for (int j = i+1; j < numbers.length; j++) {
+			for (int j = i + 1; j < numbers.length; j++) {
 				if(numbers[i] == numbers[j]) {
 					System.out.println("i : " + i + ", j : " + j);
 					System.out.println("numbers[i] : " + numbers[i] + ", numbers[j] : " + numbers[j]);
@@ -56,6 +63,5 @@ public class Lottery {
 			}
 		}
 		return false;
-	}
-    
+    }
 }
