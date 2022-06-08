@@ -1,34 +1,38 @@
 package JH.codetest;
 
-import java.io.File;
-import java.io.PrintStream;
-import java.time.LocalDate;
+import java.io.*;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class Lottery {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
+        LocalDateTime now = LocalDateTime.now();
+        String formatedNow = now.format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
+
+        String FileName = "lotto" + formatedNow + ".txt";
+        String FileFullName = "C:\\Lottery\\" + FileName;
+
         Scanner sc = new Scanner(System.in);
         Lottery lottery = new Lottery();
-        LocalDate now = LocalDate.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy:MM:dd HH:mm:ss");
-        String formatednow = now.format(formatter);
 
         System.out.println("자동 로또입니다");
         System.out.print("시행할 횟수를 입력하세요:");
-
         int count = sc.nextInt();
 
         for (int i = 1; i <= count; i++) {
             try {
-				System.out.println(lottery.lotteryNumbers());
-			} catch (Exception e) {
-				System.out.println("중복된 번호가 발생하였습니다!");
-				e.printStackTrace();
-			}
+                PrintStream out = new PrintStream(new FileOutputStream(FileFullName, true), true);
+                System.setOut(out);
+                System.out.println(lottery.lotteryNumbers());
+            } catch (Exception e) {
+                System.out.println("중복된 번호가 발생하였습니다!");
+                e.printStackTrace();
+            }
         }
     }
+
 
     String lotteryNumbers() throws Exception {
 
