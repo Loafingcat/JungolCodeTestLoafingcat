@@ -8,12 +8,19 @@ import java.util.Scanner;
 
 public class Lottery {
 	public static void main(String[] args) throws Exception {
+		/* 파일 생성 */
+		// 시간 설정함
         LocalDateTime now = LocalDateTime.now();
         String formatedNow = now.format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
 
-        String FileName = "lotto" + formatedNow + ".txt";
-        String FileFullName = "C:\\Lottery\\" + FileName;
+		// 파일 이름 정함
+        String FileName = "lotto" + formatedNow + ".txt"; // 변수 이름 네이밍 포맷 통일할 것.
 
+		// 파일 저장될 경로 정함
+		// 숙제 : 파일 경로상 디렉토리 없으면 디렉토리 생성하기.
+        String FileFullPath = "C:\\Lottery\\" + FileName;
+
+		/* 입력 */
         Scanner sc = new Scanner(System.in);
         Lottery lottery = new Lottery();
 
@@ -23,11 +30,11 @@ public class Lottery {
 
         for (int i = 1; i <= count; i++) {
             try {
-                PrintStream out = new PrintStream(new FileOutputStream(FileFullName, true), true);
+                PrintStream out = new PrintStream(new FileOutputStream(FileFullPath, true), true);
                 System.setOut(out);
                 System.out.println(lottery.lotteryNumbers());
             } catch (Exception e) {
-                System.out.println("중복된 번호가 발생하였습니다!");
+                System.out.println("실패했습니다!");
                 e.printStackTrace();
             }
         }
