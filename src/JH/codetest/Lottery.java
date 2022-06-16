@@ -14,11 +14,18 @@ public class Lottery {
         String formatedNow = now.format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
 
 		// 파일 이름 정함
-        String FileName = "lotto" + formatedNow + ".txt"; // 변수 이름 네이밍 포맷 통일할 것.
+        String fileName = "lotto" + formatedNow + ".txt"; // 변수 이름 네이밍 포맷 통일할 것.
 
 		// 파일 저장될 경로 정함
 		// 숙제 : 파일 경로상 디렉토리 없으면 디렉토리 생성하기.
-        String FileFullPath = "C:\\Lottery\\" + FileName;
+        File file = new File("C:\\Lottery");
+        boolean directoryCreated = file.mkdir();
+        if (directoryCreated == true) {
+            System.out.println("디렉토리가 생성되었습니다.");
+        } else {
+            System.out.println("디렉토리가 이미 존재합니다.");
+        }
+        String fileFullPath = "C:\\Lottery\\" + fileName;
 
 		/* 입력 */
         Scanner sc = new Scanner(System.in);
@@ -30,7 +37,7 @@ public class Lottery {
 
         for (int i = 1; i <= count; i++) {
             try {
-                PrintStream out = new PrintStream(new FileOutputStream(FileFullPath, true), true);
+                PrintStream out = new PrintStream(new FileOutputStream(fileFullPath, true), true);
                 System.setOut(out);
                 System.out.println(lottery.lotteryNumbers());
             } catch (Exception e) {
