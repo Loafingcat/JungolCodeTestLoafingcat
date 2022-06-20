@@ -8,26 +8,10 @@ import java.util.Scanner;
 
 public class Lottery {
 	public static void main(String[] args) throws Exception {
-		/* 파일 생성 */
-		// 시간 설정함
-        LocalDateTime now = LocalDateTime.now();
-        String formatedNow = now.format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
 
-		// 파일 이름 정함
-        String fileName = "lotto" + formatedNow + ".txt"; // 변수 이름 네이밍 포맷 통일할 것.
+        String fileFullPath = makeFilePath("C:\\Lottery") + "\\" + getFileName(); // 파일 이름을 정하는 메소드로 기능 분리.
 
-		// 파일 저장될 경로 정함
-		// 숙제 : 파일 경로상 디렉토리 없으면 디렉토리 생성하기.
-        File file = new File("C:\\Lottery");
-        boolean directoryCreated = file.mkdir();
-        if (directoryCreated == true) {
-            System.out.println("디렉토리가 생성되었습니다.");
-        } else {
-            System.out.println("디렉토리가 이미 존재합니다.");
-        }
-        String fileFullPath = "C:\\Lottery\\" + fileName;
-
-		/* 입력 */
+		/* 생성된 파일에 입력 */
         Scanner sc = new Scanner(System.in);
         Lottery lottery = new Lottery();
 
@@ -47,8 +31,27 @@ public class Lottery {
         }
     }
 
+    private static String makeFilePath(String s) {
+        File file = new File("C:\\Lottery");
+        boolean directoryCreated = file.mkdir();
+        if (directoryCreated == true) {
+            System.out.println("디렉토리가 생성되었습니다.");
+        } else {
+            System.out.println("디렉토리가 이미 존재합니다.");
+        }
+        return s;
+    }
 
-    String lotteryNumbers() throws Exception {
+    private static Object getFileName() {
+        LocalDateTime now = LocalDateTime.now();
+        String formatedNow = now.format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
+        String fileName = "lotto" + formatedNow + ".txt";
+
+        return fileName;
+    }
+
+
+    private String lotteryNumbers() throws Exception {
 
         int[] lotteryNums = new int[6];
 
