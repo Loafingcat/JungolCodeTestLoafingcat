@@ -9,8 +9,9 @@ import java.util.Scanner;
 public class Lottery {
 	public static void main(String[] args) throws Exception {
 
-        String fileFullPath = makeFilePath("C:\\Lottery") + "\\" + getFileName(); // 파일 이름을 정하는 메소드로 기능 분리.
-
+        String fileFullPath = makeDirectoryPath("C:\\Lottery") + "\\" + getFileName(); // 파일 이름을 정하는 메소드로 기능 분리.
+        //makeDirectoryPath는 객체선언을 하지 않았기 때문에 메소드로 뺄 때 static선언을 해줘야한다. static을 쓰지 않으려면 객체선언한
+        //lottery를 makeDirectoryPath 앞에 붙여주자 ex) lottery.makeDirectoryPath
 		/* 생성된 파일에 입력 */
         Scanner sc = new Scanner(System.in);
         Lottery lottery = new Lottery();
@@ -31,7 +32,7 @@ public class Lottery {
         }
     }
 
-    private static String makeFilePath(String s) {
+    private static String makeDirectoryPath(String s) {
         File file = new File("C:\\Lottery");
         boolean directoryCreated = file.mkdir();
         if (directoryCreated == true) {
