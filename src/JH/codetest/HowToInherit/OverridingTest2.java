@@ -1,6 +1,5 @@
 package JH.codetest.HowToInherit;
 
-import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
 
 class OverridingParent2 {
     int money = 20; // 부모 클래스에서는 머니를 int로
