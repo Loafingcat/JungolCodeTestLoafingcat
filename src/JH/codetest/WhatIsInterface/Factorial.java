@@ -1,16 +1,19 @@
 package JH.codetest.WhatIsInterface;
 
-
+// 자바 인터페이스를 사용해본다에 의의를 두는 팩토리얼 계산 연습.
 public class Factorial {
 
     // 보완숙제 :
     public static void main(String[] args) {
-        Calculator calculator = new Calculator(); // Caculator : 계산기, 뭘 계산하는지? 클래스 이름 불명확하다.
+        // Caculator : 계산기, 뭘 계산하는지? 클래스 이름 불명
+        System.out.println("팩토리얼 계산기입니다.");
+        System.out.print("10이하의 숫자를 입력하세요: ");
+        Exceptionable fc = new FactorialCalculater();
 
-        // 매개변수가 들어가면 좋을듯 : 매개변수 역할은 n부터 factorial 연산 할건지?
-        // caculate()는 사용자의 입력도 받고있고, 계산도 수행하고, console로 출력도 수행하다.
-        // 각각 분리해서 구현 해보삼.
-        calculator.calculate();
+        fc.exception(); // 검사 : 사용자가 입력하는 숫자가 ? 이상인가 아닌가?
+        fc.calculateFactorial();
+        fc.printOut();
+
     }
 }
 
