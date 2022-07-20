@@ -1,9 +1,9 @@
 package JH.codetest.WhatIsInterface;
 
-public interface Exceptionable extends CalculatableFactorial, PrintOutable {
+public interface Examinable extends CalculatableFactorial, PrintOutable {
 
 
-    void exception();
+    void examinePrecondition();
 
     @Override
     void calculateFactorial();

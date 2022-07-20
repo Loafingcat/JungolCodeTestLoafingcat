@@ -8,9 +8,9 @@ public class Factorial {
         // Caculator : 계산기, 뭘 계산하는지? 클래스 이름 불명
         System.out.println("팩토리얼 계산기입니다.");
         System.out.print("10이하의 숫자를 입력하세요: ");
-        Exceptionable fc = new FactorialCalculater();
+        Examinable fc = new FactorialCalculater();
 
-        fc.exception(); // 검사 : 사용자가 입력하는 숫자가 ? 이상인가 아닌가?
+        fc.examinePrecondition(); // 검사 : 사용자가 입력하는 숫자가 ? 이상인가 아닌가?
         fc.calculateFactorial();
         fc.printOut();
 
