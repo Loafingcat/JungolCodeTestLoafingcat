@@ -6,15 +6,22 @@ import java.util.Scanner;
 public class Jungol154 {
     public static void main(String[] args) {
 
+
+        //입력받는 부분
         Scanner sc = new Scanner(System.in);
         double[] weights = new double[5];
 
+        //나열하는 부분
         for (int i = 0; i < weights.length; i++) {
             weights[i] = sc.nextDouble();
             //Arrays.sort(weights);
         }
+
+        //평균
         double avg = avg(weights);
+        //가장 가벼운 사람
         double min = min(weights);
+        //가장 무거운 사람
         double max = max(weights);
 
         // weights[] 배열의 길이에 상관 없이 평균을 구하는 메소드를 만들고, 이걸 갖다 써서 구현 해 보시오.
