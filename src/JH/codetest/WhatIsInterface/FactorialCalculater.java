@@ -3,15 +3,20 @@ package JH.codetest.WhatIsInterface;
 import java.util.Scanner;
 
 class FactorialCalculater implements Examinable {
+    private int LIMIT_NUMBER;
     Scanner sc = new Scanner(System.in);
-    int output = 1; // 멤버변수 이름을 에이?
-    int userInput = sc.nextInt(); // 멤버변수 이름이 엔?
+    int output = 1;
+    int userInput = sc.nextInt();
+
+    public FactorialCalculater(int LIMIT_NUMBER) {
+        this.LIMIT_NUMBER = LIMIT_NUMBER;
+    }
 
     @Override
     public void examinePrecondition() { // 이름이 익셉션 : 예외
 
-        if ( userInput > 10) {
-            System.out.println("10이하의 숫자만 입력해주세요.");
+        if ( userInput > LIMIT_NUMBER) {
+            System.out.println(LIMIT_NUMBER + "이하의 숫자만 입력해주세요.");
             System.exit(0);
         }
     }
